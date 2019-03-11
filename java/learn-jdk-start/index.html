@@ -1,0 +1,447 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="一双手 + 一棵豆子 = 改变世界">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="https://github.com/aiceflower/aiceflower.github.io">
+    <!--SEO-->
+
+    <meta name="keywords" content="jdk源码,java">
+
+
+    <meta name="description" content="对于java开发人员来说，你学过java基础，知道什么是对象、类、方法、变量，你了解过java IO、多线程、网络编程,知道jsp、servlet、session、cookie,使用过sprin...">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+
+<title>一起学JDK源码 -- 开篇 | 一双手 + 一棵豆子 = 改变世界</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="一双手 + 一棵豆子 = 改变世界" type="application/atom+xml">
+
+
+    <link rel="icon" href="/img/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header" style="background-image:url(/img/top_one.png)">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="aiceflower">
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            
+                <h2> 一双手 + 一棵豆子 = 改变世界 </h2>
+            
+    	</div>
+    </div>
+</header>
+
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://github.com/aiceflower/aiceflower.github.io">一双手 + 一棵豆子 = 改变世界</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>前端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/后端"><i class="fa "></i>后端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/tools"><i class="fa "></i>工具</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="一起学JDK源码 -- 开篇">
+            
+	            一起学JDK源码 -- 开篇
+            
+        </h1>
+        <div class="post-meta">
+    
+        <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+            <a class="category-link" href="/categories/后端/">后端</a> <a class="category-link" href="/categories/后端/java/">java</a>
+        </span>
+    
+
+    
+        <span class="fa-wrap">
+            <i class="fa fa-tags"></i>
+            <span class="tags-meta">
+                
+                    <a class="tag-link" href="/tags/java/">java</a> <a class="tag-link" href="/tags/jdk源码/">jdk源码</a>
+                
+            </span>
+        </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2019/03/08</span>
+        </span>
+        
+            <span class="fa-wrap">
+                <i class="fa fa-eye"></i>
+                <span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    
+</div>
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <p>对于java开发人员来说，你学过java基础，知道什么是对象、类、方法、变量，你了解过java IO、多线程、网络编程,知道jsp、servlet、session、cookie,使用过spring、struts2、hibernate、mybatis。你做过很多项目，开发实现各种功能都很轻松，代码写起来一点也不费劲。但你自己心里清楚，你写的都是功能性的业务逻辑，稍微深入一点你就不知道了。你很明白自己其实没有什么水平，更称不上是大牛。 于是你为了让自己变成所为的大牛开始学习各种框架spring boot、spring cloud、netty、dubbo。渐渐的你会发现，学这些有什么用，你会的别人不会，但你告诉别人了，别人稍微学一下也就会了，你的竞争力在哪里，于是你又迷茫了。你很努力的在学习，但你又觉得很不踏实，技术的种类何其之多，今天学了这个，明天要用那个，然而一段时间不用之后你会全然忘记。有没有一种一劳永逸的方法呢，答案是有的，那就是要有扎实的java基础。什么才是扎实的java基础，答：玩好JDK。玩好JDK包括两部分：一是学好JVM、二是玩转java基础类库。技术只是手段，思想才是关键。通过查看JDK的源码，了解java的思想。了解了java的创造者是怎么想的，再来学习java相关的框架将会事半功倍，而且根深蒂固。接下来让我们一起走进JDK源码的世界，看看创造者们的思想。至于JVM，研究好了java基础类库再去研究。</p>
+<h1 id="文章目的"><a href="#文章目的" class="headerlink" title="文章目的"></a>文章目的</h1><ul>
+<li>了解创造者们的思想</li>
+<li>知晓原理提升面试能力</li>
+<li>提升自己的内功</li>
+<li>为还在迷茫的我们提供一个方向</li>
+</ul>
+<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><p><a href="https://www.jianshu.com/p/08c8890af5a0" target="_blank" rel="noopener">一起学JDK源码 – Object类</a><br><a href="https://www.jianshu.com/p/aebe99708d95" target="_blank" rel="noopener">一起学JDK源码 – Number类</a><br><a href="https://www.jianshu.com/p/26bedb3ae3c4" target="_blank" rel="noopener">一起学JDK源码 – Byte类</a><br><a href="https://www.jianshu.com/p/3826ccd9e867" target="_blank" rel="noopener">一起学JDK源码 – Short类</a><br><a href="https://www.jianshu.com/p/e07d126ac1d0" target="_blank" rel="noopener">一起学JDK源码 – Integer类</a><br><a href="https://www.jianshu.com/p/160c2bf8f781" target="_blank" rel="noopener">一起学JDK源码 – Long类</a><br><a href="https://www.jianshu.com/p/11d693340afc" target="_blank" rel="noopener">一起学JDK源码 – Float类</a><br><a href="https://www.jianshu.com/p/573457f624d2" target="_blank" rel="noopener">一起学JDK源码 – Double类</a><br><a href="https://www.jianshu.com/p/f1fd2fddda9a" target="_blank" rel="noopener">一起学JDK源码 – Boolean类</a><br><a href="https://www.jianshu.com/p/b3e9deacd155" target="_blank" rel="noopener">一起学JDK源码 – String类</a><br><a href="https://www.jianshu.com/p/77e82f324144" target="_blank" rel="noopener">一起学JDK源码 – AbstractStringBuilder类</a><br><a href="https://www.jianshu.com/p/9f5d1dd7d383" target="_blank" rel="noopener">一起学JDK源码 – StringBuilder类</a><br><a href="https://www.jianshu.com/p/6a713cad80a9" target="_blank" rel="noopener">一起学JDK源码 – StringBuffer类</a><br><a href="https://www.jianshu.com/p/364eb51df927" target="_blank" rel="noopener">一起学JDK源码 – System类</a><br>上述是有关一起学JDK源码的目录，后期在更新文章中可能还会添加，每次添加都会修改本文章内容，并且每次发布新文章都会添加超链接到对应的章节。</p>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="https://aiceflower.github.io" target="_blank">Aiceflower</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+    
+        <a href="/tools/hexo_build_blog/" class="next-post btn btn-default" title="hexo-github搭建个人博客">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">hexo-github搭建个人博客</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+	
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/js/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'g1eM9mmyQl9uzKaeWIfVcsss-gzGzoHsz',
+            appKey: 'ye7F7MwDY0J48QeJCppYu7Xd',
+            placeholder: '欢迎来撩...',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'aiceflower,aiceflower@sina.com'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'zh-CN'.toLowerCase()
+        })
+    </script>
+
+
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    
+    <aside class="col-md-4 sidebar">
+        
+        
+    <div class="widget">
+        <h3 class="title">搜索</h3>
+        <div id="search-form">
+            <div id="result-mask" class="hide"></div>
+            <div class="search-area">
+                
+                    <input id="search-key" type="search" autocomplete="off" placeholder="搜你想搜">
+                    <button type="button" class="search-form-submit" id="search-local">站内搜索</button>
+                
+                
+            </div>
+            <div id="result-wrap" class="hide">
+                <div id="search-result"></div>
+            </div>
+            <div class="hide">
+                <template id="search-tpl">
+                    <div class="item">
+                        <a href="/{path}" title="{title}">
+                            <div class="title">{title}</div>
+                            <div class="content">{content}</div>
+                        </a>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </div>
+
+        
+        
+    <div class="widget">
+        <h3 class="title">网站公告</h3>
+        <div class="notification">
+            <p>
+    <strong>You got a dream, you got to protect it.
+    People can't do something by themselves,they wanna tell you you can not do it.
+    You want something. Go get it！</strong><br>
+</p>
+        </div>
+    </div>
+
+        
+        
+    <div class="widget">
+      <h3 class="title">社交</h3> 
+        <div class="content social">
+            
+	            <a href="//github.com/aiceflower" rel="external nofollow" title="Github" target="_blank">
+			    	<i class="git fa fa-git"></i>
+			    </a>
+            
+	            <a href="/" rel="external nofollow" title="邮箱" target="_blank">
+			    	<i class="envelope-o fa fa-envelope-o"></i>
+			    </a>
+            
+	            <a href="/" rel="external nofollow" title="联系QQ" target="_blank">
+			    	<i class="qq fa fa-qq"></i>
+			    </a>
+            
+	            <a href="/" rel="external nofollow" title="微信" target="_blank">
+			    	<i class="weixin fa fa-weixin"></i>
+			    </a>
+            
+	            <a href="/" rel="external nofollow" title="QQ群" target="_blank">
+			    	<i class="users fa fa-users"></i>
+			    </a>
+            
+	            <a href="/atom.xml" rel="external nofollow" title="RSS" target="_blank">
+			    	<i class="feed fa fa-feed"></i>
+			    </a>
+            
+        </div>
+    </div>
+
+
+        
+        
+    <div class="widget">
+        <h3 class="title">分类</h3>
+        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/tools/"><i class="fa" aria-hidden="true">tools</i></a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/tools/hexo/"><i class="fa" aria-hidden="true">hexo</i></a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/后端/"><i class="fa" aria-hidden="true">后端</i></a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/后端/java/"><i class="fa" aria-hidden="true">java</i></a><span class="category-list-count">1</span></li></ul></li></ul>
+    </div>
+ -->
+
+        
+        
+    <div class="widget">
+        <h3 class="title">归档</h3>
+        <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/"><i class="fa" aria-hidden="true">2019年03月</i></a><span class="archive-list-count">2</span></li></ul>
+    </div>
+
+
+        
+        
+  <div class="widget">
+    <h3 class="title">标签云</h3>
+    <div class="content tag-cloud">
+        
+            <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/jdk源码/" style="font-size: 10px;">jdk源码</a>
+        
+    </div>
+  </div>
+
+
+        
+        
+    <div class="widget">
+        <h3 class="title">友链</h3>
+        <div class="content friends-link">
+        
+            <a href="https://github.com/Snailclimb/JavaGuide" class="fa" target="_blank">Java指导[Java学习+面试指南]</a>
+        
+            <a href="https://github.com/doocs/advanced-java" class="fa" target="_blank">Java工程师进阶扫盲</a>
+        
+        </div>
+    </div>
+
+
+        
+    </aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+        访问量:
+        <strong id="busuanzi_value_site_pv">
+            <i class="fa fa-spinner fa-spin"></i>
+        </strong>
+        &nbsp; | &nbsp;
+        访客数:
+        <strong id="busuanzi_value_site_uv">
+            <i class="fa fa-spinner fa-spin"></i>
+        </strong>
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright @Aiceflower 2019-03
+                </span> |
+                <span>@Email: aiceflower@sina.com
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+	<script src="/js/jquery.min.js"></script>
+    <!-- 页面点击小红心 
+    <script type="text/javascript" src="/js/love.js"></script>
+	-->
+    <script type="text/javascript" src="/js/value_of_core.js"></script>
+	<!--动态线条背景-->
+	<script type="text/javascript"
+		color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js">
+	</script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
